@@ -8,7 +8,7 @@ const getAI = (): GoogleGenAI => {
   if (!ai) {
     const apiKey = import.meta.env.VITE_API_KEY || process.env.API_KEY;
     if (!apiKey) {
-      throw new Error('API Key missing');
+      throw parseGeminiError(new Error('API Key missing'));
     }
     ai = new GoogleGenAI({ apiKey });
   }
